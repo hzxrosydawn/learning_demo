@@ -1,5 +1,7 @@
 <%@page contentType="text/html; charset=GBK" %>
-<%@page import="java.security.*,java.net.*,java.io.*" %>
+<%@page import="java.io.File,java.net.MalformedURLException,java.net.URL" %>
+<%@ page import="java.security.CodeSource" %>
+<%@ page import="java.security.ProtectionDomain" %>
 <%!
     public static URL getClassLocation(final Class cls) {
         if (cls == null) throw new IllegalArgumentException("null input: cls");

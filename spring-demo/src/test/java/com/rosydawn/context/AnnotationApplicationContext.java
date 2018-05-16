@@ -1,9 +1,8 @@
 package com.rosydawn.context;
 
+import com.rosydawn.Car;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.rosydawn.Car;
 
 public class AnnotationApplicationContext {
 

@@ -1,9 +1,8 @@
 package com.rosydawn.context;
 
+import com.rosydawn.Car;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.rosydawn.Car;
 
 @Configuration
 public class Beans {

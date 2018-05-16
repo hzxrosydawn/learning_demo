@@ -1,8 +1,8 @@
 package com.rosydawn.context;
 
+import com.rosydawn.Car;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import com.rosydawn.Car;
 
 public class MyBeanPostProcessor implements BeanPostProcessor{
 

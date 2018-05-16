@@ -1,14 +1,12 @@
 package com.rosydawn.beanfactory;
 
+import com.rosydawn.Car;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-
-import com.rosydawn.Car;
 
 public class BeanLifeCycle {
     private static void LifeCycleInBeanFactory(){

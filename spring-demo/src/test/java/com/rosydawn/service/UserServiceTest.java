@@ -1,12 +1,15 @@
 package com.rosydawn.service;
 
-import java.util.Date;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
-import org.testng.annotations.*;
+import com.rosydawn.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import com.rosydawn.domain.User;
-import static org.testng.Assert.*;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.annotations.Test;
+
+import java.util.Date;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * ContextConfiguration 注解用于指定配置文件，应用其中的Bean依赖关系。
