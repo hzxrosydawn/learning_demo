@@ -22,7 +22,7 @@
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <hibernate-core.version>5.1.13.Final</hibernate-core.version>
 
-        <httpclient.version>4.5.2</httpclient.version>
+        <httpclient.version>4.3.6</httpclient.version>
         <javax.servlet-api.version>3.0.1</javax.servlet-api.version>
         <jsp-api.version>2.2</jsp-api.version>
         <jstl.version>1.2</jstl.version>
@@ -34,7 +34,7 @@
         <commons-codec.version>1.10</commons-codec.version>
         <bcprov-jdk15on.version>1.59</bcprov-jdk15on.version>
         <jackson.version>2.6.7</jackson.version>
-        <quartz.version>2.3.0</quartz.version>
+        <quartz.version>2.2.1</quartz.version>
     </properties>
 
     <dependencies>
@@ -232,6 +232,25 @@
             <artifactId>quartz-jobs</artifactId>
             <version>${quartz.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
