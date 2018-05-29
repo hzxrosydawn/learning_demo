@@ -2,7 +2,7 @@ package com.rosydawn;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+//import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 //@EnableAutoConfiguration
 @SpringBootApplication // 代替上面三个注解
 @EnableTransactionManagement
-public class Application  extends SpringBootServletInitializer implements WebApplicationInitializer {
+public class Application  /*extends SpringBootServletInitializer implements WebApplicationInitializer*/ {
 
     @Bean
     public PlatformTransactionManager txManager(DataSource dataSource) {
