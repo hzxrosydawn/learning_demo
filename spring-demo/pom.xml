@@ -29,6 +29,13 @@
         <jetty.version>8.1.8.v20121106</jetty.version>
         <slf4j.version>1.7.5</slf4j.version>
         <testng.version>6.8.7</testng.version>
+
+        <!---->
+        <app.main.class>com.rosydawn.resource.FileSourceExample</app.main.class>
+        <manifest.compile.source>1.8</manifest.compile.source>
+        <manifest.compile.target>1.8</manifest.compile.target>
+        <manifest.compile.target>1.8</manifest.compile.target>
+
     </properties>
 
     <dependencies>
@@ -106,94 +113,164 @@
 
     <build>
         <finalName>spring-demo</finalName>
-        <pluginManagement>
-            <plugins>
-                <!-- jetty插件 -->
-                <plugin>
-                    <!-- 各版本的groupId稍有不同：
-                    从9.x.x开始的版本的groupId为org.eclipse.jetty，
-                    在8.x.x及之前的版本的groupId为org.mortbay.jetty -->
-                    <!--<groupId>org.eclipse.jetty</groupId>-->
-                    <groupId>org.mortbay.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <!-- 各插件版本对应的JDK、Servlet即JSP版本：
-                    9.4.6.v20170531(JDK1.8+&Servlet3.1&JSP2.3)
-                    9.2.8.v20150217（JDK1.7+&Servlet3.1&JSP2.3）
-                    8.1.16.v20140903(JDK1.6+&Servlet3.0&JSP2.2)
-                    7.6.16.v20140903(JDK1.5+&Servlet2.5&JSP2.1) -->
-                    <version>8.1.16.v20140903</version>
-                    <!-- 7.x.x的版本不支持configuration元素 -->
-                    <configuration>
-                        <!--<httpConnector>
-                            <port>8081</port>
-                        </httpConnector>--> <!--jetty 9 config-->
-                        <stopKey>shutdown</stopKey>
-                        <stopPort>9966</stopPort>
-                        <scanIntervalSeconds>5</scanIntervalSeconds>
-                        <reload>manual</reload>
-                        <!--<dumpOnStart>true</dumpOnStart>-->
-                        <connectors>
-                            <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                                <port>8080</port>
-                                <maxIdleTime>60000</maxIdleTime>
-                            </connector>
-                        </connectors> <!--jetty 8 config-->
-                        <webApp>
-                            <contextPath>/${project.artifactId}</contextPath>
-                            <!--
-                            <resourceBases>
-                              <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
-                              <resourceBase>${project.basedir}/commons</resourceBase>
-                            </resourceBases>
-                            -->
-                        </webApp>
-                        <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
-                            <filename>target/access-yyyy_mm_dd.log</filename>
-                            <filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
-                            <logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
-                            <logTimeZone>GMT+8:00</logTimeZone>
-                            <append>true</append>
-                            <logServer>true</logServer>
-                            <retainDays>120</retainDays>
-                            <logCookies>true</logCookies>
-                        </requestLog>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-                <!-- 此编译插件强制指定编译所用的JDK版本，可以避免必须每次手动将IDE中的编译JDK版本调整到已有较高JDK版本 -->
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                        <encoding>utf-8</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.20.1</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.2</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.2</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <!-- jetty插件 -->
+            <plugin>
+                <!-- 各版本的groupId稍有不同：
+                从9.x.x开始的版本的groupId为org.eclipse.jetty，
+                在8.x.x及之前的版本的groupId为org.mortbay.jetty -->
+                <!--<groupId>org.eclipse.jetty</groupId>-->
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <!-- 各插件版本对应的JDK、Servlet即JSP版本：
+                9.4.6.v20170531(JDK1.8+&Servlet3.1&JSP2.3)
+                9.2.8.v20150217（JDK1.7+&Servlet3.1&JSP2.3）
+                8.1.16.v20140903(JDK1.6+&Servlet3.0&JSP2.2)
+                7.6.16.v20140903(JDK1.5+&Servlet2.5&JSP2.1) -->
+                <version>8.1.16.v20140903</version>
+                <!-- 7.x.x的版本不支持configuration元素 -->
+                <configuration>
+                    <!--<httpConnector>
+                        <port>8081</port>
+                    </httpConnector>--> <!--jetty 9 config-->
+                    <stopKey>shutdown</stopKey>
+                    <stopPort>9966</stopPort>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <reload>manual</reload>
+                    <!--<dumpOnStart>true</dumpOnStart>-->
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8080</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors> <!--jetty 8 config-->
+                    <webApp>
+                        <contextPath>/${project.artifactId}</contextPath>
+                        <!--
+                        <resourceBases>
+                          <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
+                          <resourceBase>${project.basedir}/commons</resourceBase>
+                        </resourceBases>
+                        -->
+                    </webApp>
+                    <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
+                        <filename>target/access-yyyy_mm_dd.log</filename>
+                        <filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
+                        <logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
+                        <logTimeZone>GMT+8:00</logTimeZone>
+                        <append>true</append>
+                        <logServer>true</logServer>
+                        <retainDays>120</retainDays>
+                        <logCookies>true</logCookies>
+                    </requestLog>
+                </configuration>
+            </plugin>
+
+
+            <!-- maven 核心插件 -->
+            <!-- maven-clean-plugin 插件负责删除编译生成的 target 目录 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <!-- maven-resources-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+
+            </plugin>
+            <!-- maven-compiler-plugin 插件负责处理编译 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <!-- put your compilation configurations here -->
+                    <!--强制指定编译所用的JDK版本（默认为1.5），可以避免必须每次手动将IDE中的编译JDK版本调整到已有较高JDK版本-->
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <!---->
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+
+            <!-- maven-shade-plugin 插件可以将应用打包为超级的 uber-jar（也称为fat jar，或shaded jar）。在打包的过程中，可以
+                包含依赖库、重命名依赖库的包名（以避免类库的冲突、有选择地打包。 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <!-- shade goal 默认加入到 Maven 的 package 阶段 -->
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+
+                        <configuration>
+                            <!-- put your configurations here -->
+
+                            <transformers>
+                                <!-- ManifestResourceTransformer 设置 MANIFEST 中的 entries -->
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <!-- 指定应用带 main() 方法的类。这样打出的包可以直接运行（main方法） -->
+                                        <Main-Class>${app.main.class}</Main-Class>
+                                        <X-Compile-Source-JDK>${manifest.compile.source}</X-Compile-Source-JDK>
+                                        <X-Compile-Target-JDK>${manifest.compile.target}</X-Compile-Target-JDK>
+                                    </manifestEntries>
+                                </transformer>
+
+                                <!-- DontIncludeResourceTransformer 用于在打包时不包含某些文件。
+                                下面的配置包含.txt文件 -->
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+                                    <resource>.txt</resource>
+                                </transformer>
+
+                                <!-- IncludeResourceTransformer 用于在打包时包含某些文件。
+                                下面的配置包含META-INF/README/README.txt-->
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+                                    <resource>META-INF/README</resource>
+                                    <file>README.txt</file>
+                                </transformer>
+                            </transformers>
+
+                            <relocations>
+                                <!-- 改变默认包名以避免冲突 -->
+                                <!--<relocation>
+                                    <pattern>com.app.old.jar</pattern>
+                                    <shadedPattern>com.app.new.jar</shadedPattern>
+                                </relocation>-->
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>
