@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
     <!-- 使用classpath关键字从类路径加载Spring配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -17,9 +18,9 @@
         </listener-class>
     </listener>
 
-    <!--指定Spring的主控Servlet。
-    该Servlet的名称“serverName”要求在WEB-INF目录下存在一个“serverName-servlet.xml”（可以配置视图解析器等），
-    该配置文件无需在contextConfigLocation上下文参数中配置，Spring会自动将该xml文件与其他Spring配置文件进行合并-->
+    <!--指定Spring的主控Servlet。如果该Servlet的名称为“serverName”，则约定在WEB-INF目录下必须存在一个名为
+    “serverName-servlet.xml”（可以配置视图解析器等），该配置文件无需在contextConfigLocation上下文参数中配置，
+    Spring MVC的Servlet会自动将该xml文件与其他Spring配置文件进行合并。 -->
     <servlet>
         <servlet-name>sample</servlet-name>
         <servlet-class>

@@ -3350,7 +3350,7 @@ public abstract class WebappClassLoaderBase extends URLClassLoader
                 if (canonicalPath != null) {
                     // we create the ResourceEntry based on the information returned
                     // by the DirContext rather than just using the path to the
-                    // repository. This allows to have smart DirContext implementations
+                    // repository. This allows to have rosydawn DirContext implementations
                     // that "virtualize" the docbase (e.g. Eclipse WTP)
                     entry = findResourceInternal(new File(canonicalPath), "");
                 } else {

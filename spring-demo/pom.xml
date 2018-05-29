@@ -28,7 +28,7 @@
         <hibernate.validator.version>5.4.1.Final</hibernate.validator.version>
         <jetty.version>8.1.8.v20121106</jetty.version>
         <slf4j.version>1.7.5</slf4j.version>
-        <testng.version>6.8.7</testng.version>
+        <testng.version>6.8.21</testng.version>
     </properties>
 
     <dependencies>
@@ -72,11 +72,13 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>${jsp-api.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -88,7 +90,6 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.testng</groupId>
@@ -102,98 +103,98 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>2.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>spring-demo</finalName>
-        <pluginManagement>
-            <plugins>
-                <!-- jetty插件 -->
-                <plugin>
-                    <!-- 各版本的groupId稍有不同：
-                    从9.x.x开始的版本的groupId为org.eclipse.jetty，
-                    在8.x.x及之前的版本的groupId为org.mortbay.jetty -->
-                    <!--<groupId>org.eclipse.jetty</groupId>-->
-                    <groupId>org.mortbay.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <!-- 各插件版本对应的JDK、Servlet即JSP版本：
-                    9.4.6.v20170531(JDK1.8+&Servlet3.1&JSP2.3)
-                    9.2.8.v20150217（JDK1.7+&Servlet3.1&JSP2.3）
-                    8.1.16.v20140903(JDK1.6+&Servlet3.0&JSP2.2)
-                    7.6.16.v20140903(JDK1.5+&Servlet2.5&JSP2.1) -->
-                    <version>8.1.16.v20140903</version>
-                    <!-- 7.x.x的版本不支持configuration元素 -->
-                    <configuration>
-                        <!--<httpConnector>
-                            <port>8081</port>
-                        </httpConnector>--> <!--jetty 9 config-->
-                        <stopKey>shutdown</stopKey>
-                        <stopPort>9966</stopPort>
-                        <scanIntervalSeconds>5</scanIntervalSeconds>
-                        <reload>manual</reload>
-                        <!--<dumpOnStart>true</dumpOnStart>-->
-                        <connectors>
-                            <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                                <port>8080</port>
-                                <maxIdleTime>60000</maxIdleTime>
-                            </connector>
-                        </connectors> <!--jetty 8 config-->
-                        <webApp>
-                            <contextPath>/${project.artifactId}</contextPath>
-                            <!--
-                            <resourceBases>
-                              <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
-                              <resourceBase>${project.basedir}/commons</resourceBase>
-                            </resourceBases>
-                            -->
-                        </webApp>
-                        <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
-                            <filename>target/access-yyyy_mm_dd.log</filename>
-                            <filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
-                            <logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
-                            <logTimeZone>GMT+8:00</logTimeZone>
-                            <append>true</append>
-                            <logServer>true</logServer>
-                            <retainDays>120</retainDays>
-                            <logCookies>true</logCookies>
-                        </requestLog>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-                <!-- 此编译插件强制指定编译所用的JDK版本，可以避免必须每次手动将IDE中的编译JDK版本调整到已有较高JDK版本 -->
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                        <encoding>utf-8</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.20.1</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.2</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.2</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <finalName>sample</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 此编译插件强制指定编译所用的JDK版本，可以避免必须每次手动将IDE中的编译JDK版本调整到已有较高JDK版本 -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.6.v20170531</version>
+                <configuration>
+                    <httpConnector>
+                        <port>8081</port>
+                    </httpConnector>
+                    <!-- 指定接收stop命令的端口。 -->
+                    <stopPort>9966</stopPort>
+                    <!-- 指定发送到关闭端口的字符串来验证stop命令。 -->
+                    <stopKey>shutdown</stopKey>
+                    <!--设置内容改变后是否自动重新加载和部署。默认为automatic-->
+                    <reload>auto</reload>
+                    <!-- 检查变更和自动热部署的时间间隔。 -->
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <!--忽略代码校验，以免 Jetty 启动很慢。 -->
+                    <contextXml>${basedir}/src/test/resources/jetty-context.xml</contextXml>
+                    <war>${basedir}/target/sample</war>
+                    <webApp>
+                        <!-- 设置项目的ContextPath，默认为“/${project.artifactId}”。 -->
+                        <contextPath>/sample</contextPath>
+                        <!-- Jetty提供静态资源的多个目录，用来替换baseResource元素。 -->
+                        <resourceBases>
+                            <resourceBase>${basedir}/src/main/webapp</resourceBase>
+                            <!--<resourceBase>${project.basedir}/commons</resourceBase>-->
+                        </resourceBases>
+                        <!-- 指定一个jetty-env.xml文件的路径。在该文件中可使用JNDI。 -->
+                        <jettyEnvXml>${basedir}/src/test/resources/jetty-env.xml</jettyEnvXml>
+                    </webApp>
+                    <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
+                        <filename>target/access-yyyy_mm_dd.log</filename>
+                        <filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
+                        <logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
+                        <logTimeZone>GMT+8:00</logTimeZone>
+                        <append>true</append>
+                        <logServer>true</logServer>
+                        <retainDays>120</retainDays>
+                        <logCookies>true</logCookies>
+                    </requestLog>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

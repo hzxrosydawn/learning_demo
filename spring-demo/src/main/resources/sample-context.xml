@@ -18,14 +18,18 @@
     <context:component-scan base-package="com.rosydawn.dao"/>
     <context:component-scan base-package="com.rosydawn.service"/>
 
-
-    <!-- 配置数据源 -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close"
-          p:driverClassName="com.mysql.jdbc.Driver"
-          p:url="jdbc:mysql://localhost:3306/sample_db"
-          p:username="vincent"
-          p:password="hzx123"/>
+    <!-- 配置JNDI数据源。开发、测试、UAT和生产的数据源配置是不同的，但JNDI数据源的名称可以相同。 -->
+    <!--<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"
+          p:jndiName="jndi/jndiDataSource"/>-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/sample_db"/>
+        <property name="username" value="vincent"/>
+        <property name="password" value="hzx123"/>
+        <property name="maxActive" value="500"/>
+        <property name="maxIdle" value="30"/>
+        <property name="maxWait" value="10000"/>
+    </bean>
 
     <!-- 配置Jdbc模板  -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="dataSource"/>

@@ -27,7 +27,7 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 
 /**
- * A smart implementation of a stateful replicated map. uses primary/secondary backup strategy. 
+ * A rosydawn implementation of a stateful replicated map. uses primary/secondary backup strategy.
  * One node is always the primary and one node is always the backup.
  * This map is synchronized across a cluster, and only has one backup member.<br>
  * A perfect usage for this map would be a session map for a session manager in a clustered environment.<br>
@@ -41,7 +41,7 @@ import org.apache.juli.logging.LogFactory;
  * 2. ReplicatedMapEntry - this interface allows for a isDirty() flag and to replicate diffs if desired.<br>
  * Implementing the <code>ReplicatedMapEntry</code> interface allows you to decide what objects 
  * get replicated and how much data gets replicated each time.<br>
- * If you implement a smart AOP mechanism to detect changes in underlying objects, you can replicate
+ * If you implement a rosydawn AOP mechanism to detect changes in underlying objects, you can replicate
  * only those changes by implementing the ReplicatedMapEntry interface, and return true when isDiffable()
  * is invoked.<br><br>
  * 
