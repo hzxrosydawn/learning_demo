@@ -17,7 +17,7 @@
             </set>
         </property>
     </bean>
-    <!-- bean id="car" class="com.smart.beanfactory.Car"
+    <!-- bean id="car" class="com.rosydawnawn.beanfactory.Car"
     init-method="myInit"
     destroy-method="myDestory"
     p:brand="红旗CA72"/ -->

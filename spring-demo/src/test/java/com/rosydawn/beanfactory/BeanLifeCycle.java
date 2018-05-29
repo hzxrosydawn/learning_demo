@@ -13,7 +13,7 @@ public class BeanLifeCycle {
 
 
        //①下面两句装载配置文件并启动容器
- 	   Resource res = new ClassPathResource("com/smart/beanfactory/beans.xml");
+ 	   Resource res = new ClassPathResource("com/rosydawn/beanfactory/beans.xml");
 
        BeanFactory bf= new DefaultListableBeanFactory();
        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader((DefaultListableBeanFactory)bf);

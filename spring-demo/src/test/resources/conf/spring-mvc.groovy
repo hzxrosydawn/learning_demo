@@ -9,7 +9,7 @@ beans {
     xmlns context: "http://www.springframework.org/schema/context"
     xmlns mvc: "http://www.springframework.org/schema/mvc"
 
-    context.'component-scan'('base-package': "com.smart")
+    context.'component-scan'('base-package': "com.rosydawn")
     mvc.'annotation-driven'('validator': "validator")
 
     validator(LocalValidatorFactoryBean) {
