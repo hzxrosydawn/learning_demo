@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="crypto" />
+        <module name="file_tools" />
+        <module name="jdbc-pool" />
+        <module name="mail-demo" />
+        <module name="quartz-demo" />
+        <module name="spring-boot-demo" />
+        <module name="spring-demo" />
+        <module name="tomcat7" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="crypto" target="1.8" />
+      <module name="file_tools" target="1.6" />
+      <module name="jdbc-pool" target="1.6" />
+      <module name="jeesite-web" target="1.8" />
+      <module name="mail-demo" target="1.8" />
+      <module name="quartz-demo" target="1.6" />
+      <module name="security_demo" target="1.7" />
+      <module name="spring-boot-demo" target="1.8" />
+      <module name="spring-demo" target="1.8" />
+      <module name="tomcat7" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
