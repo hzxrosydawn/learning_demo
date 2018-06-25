@@ -1,0 +1,22 @@
+BookModel{name='智能时代:大数据与智能革命重新定义未来', author='吴军', price=68.0, publisher='中信出版集团'}
+
+BookModel{name='信息简史:一部历史一个理论一股洪流', author='詹姆斯·格雷克', price=69.0, publisher='人民邮电出版社'}
+
+BookModel{name='黑客与画家:硅谷创业之父PaulGraham文集', author='PaulGraham', price=49.0, publisher='人民邮电出版社'}
+
+BookModel{name='创业维艰:如何完成比难更难的事', author='BenHorowitz', price=49.0, publisher='中信出版社'}
+
+BookModel{name='从0到1:开启商业与未来的秘密', author='布莱克·马斯特斯', price=45.0, publisher='中信出版股份有限公司'}
+
+BookModel{name='重新定义公司:谷歌是如何运营的', author='埃里克·施密特', price=49.0, publisher='中信出版社'}
+
+BookModel{name='精益创业:新创企业的成长思维', author='埃里克·莱斯', price=49.0, publisher='中信出版社'}
+
+BookModel{name='长尾理论', author='克里斯·安德森', price=35.0, publisher='中信出版社'}
+
+BookModel{name='硅谷之谜:《浪潮之巅》续集', author='吴军', price=59.0, publisher='人民邮电出版社'}
+
+BookModel{name='计算广告:互联网商业变现的市场与技术', author='刘鹏', price=69.0, publisher='人民邮电出版社'}
+
+BookModel{name='科技想要什么', author='凯文·凯利', price=58.0, publisher='中信出版社'}
+
