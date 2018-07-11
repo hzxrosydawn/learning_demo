@@ -43,7 +43,7 @@ What it does:
                     org.apache.naming.java.javaURLContextFactory ->default)
         b3) createStartDigester()
             Configures a digester for the main server.xml elements like
-            org.apache.catalina.core.StandardServer (can change of course :)
+            org.apache.catalina.core.StandardServer (can change of courseName :)
             org.apache.catalina.deploy.NamingResources
                 Stores naming resources in the J2EE JNDI tree
             org.apache.catalina.LifecycleListener

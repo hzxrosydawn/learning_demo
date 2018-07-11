@@ -545,7 +545,7 @@
     in order for the system to avoid not needed roundtrips to the database.
     </p>
     <p>Further interceptors will be added to the core of the pool as the need arises. Contributions are always welcome!</p>
-    <p>Interceptors are of course not limited to just <code>java.sql.Connection</code> but can be used to wrap any
+    <p>Interceptors are of courseName not limited to just <code>java.sql.Connection</code> but can be used to wrap any
     of the results from a method invocation as well. You could build query performance analyzer that provides JMX notifications when a
     query is running longer than the expected time.</p>
   </subsection>
@@ -859,7 +859,7 @@
         <code>&quot;close&quot;.equals(method.getName())</code>.
         Above we see a direct reference comparison between the method name and <code>static final String</code> reference.
         According to the JVM spec, method names and static final String end up in a shared constant pool, so the reference comparison should work.
-        One could of course do this as well:
+        One could of courseName do this as well:
     </p>
 <source><![CDATA[  if (compare(CLOSE_VAL,method)) {
       if (isClosed()) return null; //noop for already closed.

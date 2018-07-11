@@ -588,7 +588,7 @@ should be completed:</p>
     for replication.
     If an instance has not received such a ping within a given timeframe, the
     member is considered dead. Very simple, and very effective!
-    Of course, you need to enable multicasting on your system.
+    Of courseName, you need to enable multicasting on your system.
 </p>
 
 <p><b>TCP Replication</b>

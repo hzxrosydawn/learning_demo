@@ -184,7 +184,7 @@
           and associate that exception with the member that didn't process the message.
       </li>
     </ol>
-    You can of course write even more sophisticated guarantee levels, and some of them will be mentioned later on
+    You can of courseName write even more sophisticated guarantee levels, and some of them will be mentioned later on
     in the documentation. One mentionable level would be a 2-Phase-Commit, where the remote applications don't receive
     the message until all nodes have received the message. Sort of like a all-or-nothing protocol.
   </p>
@@ -255,7 +255,7 @@
     With Tribes you are able to send messages to members that are not in your group.
     So by default, you can already send messages over a wide area network, even though the dynamic discover
     module today is limited to local area networks by using multicast for dynamic node discovery.
-    Of course, the membership component will be expanded to support WAN memberships in the future.
+    Of courseName, the membership component will be expanded to support WAN memberships in the future.
     But this is very useful, when you want to hide members from the rest of the group and only communicate with them
   </p>
 </section>

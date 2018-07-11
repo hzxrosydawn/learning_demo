@@ -3,6 +3,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/jeesite-demo" />
     <file type="web" url="file://$PROJECT_DIR$/security_demo" />
+    <file type="web" url="file://$PROJECT_DIR$/shiro-demo" />
     <file type="web" url="file://$PROJECT_DIR$/spring-boot-demo" />
     <file type="web" url="file://$PROJECT_DIR$/spring-demo" />
   </component>
@@ -17,6 +18,8 @@
         <option value="$PROJECT_DIR$/spring-demo/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-demo/pom.xml" />
         <option value="$PROJECT_DIR$/mail-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis-test/pom.xml" />
+        <option value="$PROJECT_DIR$/shiro-demo/pom.xml" />
       </list>
     </option>
   </component>
