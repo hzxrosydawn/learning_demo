@@ -3,11 +3,12 @@
 ### Example user template
 
 ##################################################################################
- Ignored IntelliJ project setting files
- Ref:https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# Ignored IntelliJ project setting files
+# Ref:https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 ##################################################################################
 # Maven compiled target directories and files
 **/target/
+
 # .iml files used to locate moodule directories and will be generated on import
 *.iml
 
