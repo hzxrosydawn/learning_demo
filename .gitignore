@@ -1,0 +1,19 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+##################################################################################
+ Ignored IntelliJ project setting files
+ Ref:https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+##################################################################################
+# Maven compiled target directories and files
+**/target/
+# .iml files used to locate moodule directories and will be generated on import
+.iml
+
+# All the files under .idea directory in the project root except the workspace.xml, 
+# usage.statistics.xml, and tasks.xml files which store user specific settings
+.idea
+!workspace.xml
+!usage.statistics.xml
+!tasks.xml
