@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.henry</groupId>
-    <artifactId>wechat-public</artifactId>
+    <groupId>com.rosydawn</groupId>
+    <artifactId>wechat-subscription</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -41,8 +41,8 @@
         The last version of TestNG supporting JDK 1.7 is -->
         <powermock.version>1.7.1</powermock.version>
 
-        <log4j-slf4j-impl.version>2.3</log4j-slf4j-impl.version>
-        <log4j2.version>2.3</log4j2.version>
+        <log4j-slf4j-impl.version>2.9.0</log4j-slf4j-impl.version>
+        <log4j2.version>2.9.0</log4j2.version>
 
         <commons-codec.version>1.10</commons-codec.version>
         <!-- fastjson 1.2.44 needs JDK 6.0+ -->
@@ -189,7 +189,7 @@
     </dependencies>
 
     <build>
-        <finalName>wechat</finalName>
+        <finalName>wechat-subscription</finalName>
         <plugins>
             <!-- maven 核心插件 -->
             <!-- maven-clean-plugin 插件负责删除编译生成的 target 目录 -->
@@ -251,12 +251,12 @@
                     <!-- 指定发送到关闭端口的字符串来验证stop命令。 -->
                     <stopKey>shutdown</stopKey>
                     <!--设置内容改变后是否自动重新加载和部署。默认为automatic-->
-                    <reload>auto</reload>
+                    <reload>automatic</reload>
                     <!-- 检查变更和自动热部署的时间间隔。 -->
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                     <!--忽略代码校验，以免 Jetty 启动很慢。 -->
                     <contextXml>${basedir}/src/test/resources/jetty-context.xml</contextXml>
-                    <war>${basedir}/target/wechat_subscribe</war>
+                    <war>${basedir}/target/subscription</war>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>8080</port>
@@ -265,7 +265,7 @@
                     </connectors>
                     <webApp>
                         <!-- 设置项目的ContextPath，默认为“/${project.artifactId}”。 -->
-                        <contextPath>/wechat_subscribe</contextPath>
+                        <contextPath>/wechat</contextPath>
                         <!-- 指定一个jetty-env.xml文件的路径。在该文件中可使用JNDI。 -->
                         <jettyEnvXml>${basedir}/src/test/resources/jetty-env.xml</jettyEnvXml>
                     </webApp>

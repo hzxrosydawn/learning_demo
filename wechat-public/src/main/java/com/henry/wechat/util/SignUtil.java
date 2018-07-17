@@ -36,7 +36,7 @@ public class SignUtil {
      * @param signature 微信公众平台发来的签名
      * @return 签名是否来自微信公众平台
      */
-    public static boolean isSignFromWechat(String token, String timestamp, String nonce, String signature) {
+    public static boolean validateSignature(String token, String timestamp, String nonce, String signature) {
         // 1. 先将token、timestamp、nonce三个参数进行字典序排序。
         String[] arr = new String[]{token, timestamp, nonce};
         // 根据数组元素类型进行自然升序排列
