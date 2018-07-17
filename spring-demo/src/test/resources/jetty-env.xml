@@ -6,12 +6,15 @@
     <New id="devJndiResource" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>jndi/jndiDataSource</Arg>    <!--这个要和Spring数据源配置的属性名同名-->
         <Arg>
-            <New class="org.apache.commons.dbcp.BasicDataSource">
+            <New class="org.apache.commons.dbcp2.BasicDataSource">
                 <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
-                <Set name="url">jdbc:mysql://localhost:3306/sample_db</Set>
+                <Set name="url">jdbc:mysql://localhost:3306/db_subscription</Set>
                 <Set name="username">vincent</Set>
                 <Set name="password">hzx123</Set>
-                <Set name="maxIdle">30</Set>
+                <Set name="maxTotal">50</Set>
+                <Set name="maxIdle">20</Set>
+                <Set name="minIdle">10</Set>
+                <Set name="maxWaitMillis">10000</Set>
             </New>
         </Arg>
     </New>
