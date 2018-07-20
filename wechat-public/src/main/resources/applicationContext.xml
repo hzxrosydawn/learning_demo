@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 启用扫描注解。 -->
+    <context:component-scan base-package="com"/>
+    <!-- JNDI 数据源。DEV、UAT、PRO 环境下使用相同名称的 JNDI 数据源。-->
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" p:jndiName="jndi/jndiDataSource"/>
+
+    <!--mybatis SqlSessionFactory 配置。-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="prototype"
+          p:dataSource-ref="dataSource"
+          p:configLocation="classpath:mybatisConfig.xml"
+          p:mapperLocations="classpath:mapper/*.xml"/>
+
+    <!-- 配置Spring的声明式事务管理（采用注解的方式） -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource-ref="dataSource"/> <!--引入数据源依赖 -->
+
+    <!-- 使用声明式事务。 -->
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
+</beans>
