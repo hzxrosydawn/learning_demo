@@ -25,6 +25,7 @@ public class JavaMailSendTest {
 
     @Before
     public void setup() throws Exception {
+        System.setProperty("javax.net.ssl.trustStore", "D:\\JavaDev\\jdk1.8.0_151\\jre\\lib\\security\\jssecacerts");
         String from = "hzxrosydawn@qq.com";
         String to = "hzxrosydawn@gmail.com";
         String cc = "2498918774@qq.com";
@@ -65,6 +66,7 @@ public class JavaMailSendTest {
 
         // 使用Transport对象连接邮件服务器发送邮件
         send(transport);
+        System.out.println("邮件发送完毕");
     }
 
     /**
@@ -96,6 +98,7 @@ public class JavaMailSendTest {
 
         // 使用Transport对象连接邮件服务器发送邮件
         send(transport);
+        System.out.println("邮件发送完毕");
     }
 
     /**
@@ -132,6 +135,7 @@ public class JavaMailSendTest {
 
         // 使用Transport对象连接邮件服务器发送邮件
         send(transport);
+        System.out.println("邮件发送完毕");
     }
 
     @Test
@@ -165,6 +169,7 @@ public class JavaMailSendTest {
 
         // 使用Transport对象连接邮件服务器发送邮件
         send(transport);
+        System.out.println("邮件发送完毕");
     }
 
     /**

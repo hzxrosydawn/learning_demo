@@ -41,7 +41,7 @@ public class JavaMailCreateTest {
         mimeMessage.setRecipients(Message.RecipientType.TO, toAddresses);
         // 设置抄送人（字符串形式）.也可以仿照以上步骤设置密送人
         mimeMessage.setRecipients(Message.RecipientType.CC, ccAddressArray);
-        // 设置发送日期（说明邮件客户端看到的日期不一定是实际发送日期）
+        // 设置发送日期（说明邮件客户端看到的邮件发送日期不一定是实际发送日期，但是邮件服务器上的收件日期是发送者无法更改的）
         mimeMessage.setSentDate(new Date());
 
     }
