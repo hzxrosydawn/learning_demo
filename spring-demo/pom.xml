@@ -196,7 +196,7 @@
                     </connectors>
                     <webApp>
                         <!-- 设置项目的ContextPath，默认为“/${project.artifactId}”。 -->
-                        <contextPath>/sample</contextPath>
+                        <contextPath>/wechat</contextPath>
                         <!-- 指定一个jetty-env.xml文件的路径。在该文件中可使用JNDI。 -->
                         <jettyEnvXml>${basedir}/src/test/resources/jetty-env.xml</jettyEnvXml>
                     </webApp>

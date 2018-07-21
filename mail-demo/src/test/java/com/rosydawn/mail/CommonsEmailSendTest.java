@@ -14,18 +14,18 @@ import java.net.URL;
 
 /**
  * Commons Email发送邮件测试。代码参考：http://commons.apache.org/proper/commons-email/userguide.html
- *
+ * Commons Email的邮件发送功能依赖于JavaMail API。
  * @author Vincent
  **/
 public class CommonsEmailSendTest {
     private String host = "smtp.163.com";
     private int port = 465;
-    private String userName = "hzxrosydawn@163.com";
+    private String userName = "hzxrosydawn@qq.com";
     private String password = "hzx920821";
     private String to = "hzxrosydawn@gmail.com";
     private String cc = "2498918774@qq.com";
 
-    /**
+    /**hzxrosydawn@qq.com
      * 测试发送仅含纯文本邮件
      */
     @Test
@@ -46,6 +46,7 @@ public class CommonsEmailSendTest {
         email.setMsg("This is a test mail ... :-)");
 
         email.send();
+        System.out.println("邮件发送完毕");
     }
 
     /**
@@ -75,6 +76,7 @@ public class CommonsEmailSendTest {
 
         // send the email
         email.send();
+        System.out.println("邮件发送完毕");
     }
 
     /**
@@ -127,5 +129,6 @@ public class CommonsEmailSendTest {
 
         // send the email
         email.send();
+        System.out.println("邮件发送完毕");
     }
 }
