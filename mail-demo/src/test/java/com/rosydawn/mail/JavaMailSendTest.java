@@ -1,5 +1,6 @@
 package com.rosydawn.mail;
 
+import com.sun.mail.util.MailSSLSocketFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,10 +24,24 @@ public class JavaMailSendTest {
     private MimeMessage mimeMessage;
     private Transport transport;
 
+    // 第三方登录QQ邮箱或网易邮箱时的用户名为@符号前面的部分（也可以使用完整的邮箱地址），密码为申请的授权码，
+    // 而不是平时登录网页版邮箱官网时的密码
+
+    // 使用QQ邮箱发送
+//     private String server = "smtp.qq.com";
+//     private String user = "hzxrosydawn@qq.com";
+//     private String user = "hzxrosydawn";
+//     private String password = "ulwjlxfwryjxdhja";
+
+    private String server = "smtp.163.com";
+//    private String user = "hzxrosydawn@163.com";
+    private String user = "hzxrosydawn";
+    private String password = "hzx920821";
+
     @Before
     public void setup() throws Exception {
-        System.setProperty("javax.net.ssl.trustStore", "D:\\JavaDev\\jdk1.8.0_151\\jre\\lib\\security\\jssecacerts");
-        String from = "hzxrosydawn@qq.com";
+//        String from = "hzxrosydawn@qq.com";
+        String from = "hzxrosydawn@163.com";
         String to = "hzxrosydawn@gmail.com";
         String cc = "2498918774@qq.com";
 
@@ -34,9 +49,17 @@ public class JavaMailSendTest {
         Properties properties = new Properties();
         properties.setProperty("mail.transfer.protocol", "smtp");
         properties.setProperty("mail.smtp.auth", "true");
-        // 设置使用SSL加密的属性（QQ邮箱必须使用加密传输）465端口是QQ邮箱的smtp服务的SSL连接端口
-        properties.put("mail.smtp.port", 465);
+
+        // 设置使用SSL加密的属性（QQ邮箱必须使用加密传输）
         properties.put("mail.smtp.ssl.enable", "true");
+        // 设置是smtp服务端口的端口为465
+        properties.put("mail.smtp.port", 465);
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        // 上面的一条语句可以使用下面三行语句代替
+        /*MailSSLSocketFactory sf = new MailSSLSocketFactory();
+        sf.setTrustAllHosts(true);
+        properties.put("mail.smtp.ssl.socketFactory", sf);*/
+
         Session session = Session.getInstance(properties);
 
         // 根据Session创建Message
@@ -173,15 +196,12 @@ public class JavaMailSendTest {
     }
 
     /**
-     * 使用Transport对象连接邮件服务器发送邮件
+     * 使用Transport对象连接邮件服务器发送邮件。
      *
      * @param transport 连接邮件服务器发送邮件的Transport对象
      * @throws Exception 创建出现问题时的异常
      */
     private void send(Transport transport) throws Exception {
-        String server = "smtp.qq.com";
-        String user = "hzxrosydawn";
-        String password = "ulwjlxfwryjxdhja";
         // 使用Transport对象连接邮件服务器发送邮件
         transport.connect(server, user, password);
         // 发送给所有收件人（包括to、cc和bcc）

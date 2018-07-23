@@ -128,5 +128,4 @@ public class SpringMailSendTest {
         javaMailSender.send(mimeMessage);
         System.out.println("邮件发送完毕");
     }
-
 }

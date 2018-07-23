@@ -18,10 +18,18 @@ import java.net.URL;
  * @author Vincent
  **/
 public class CommonsEmailSendTest {
-    private String host = "smtp.163.com";
     private int port = 465;
+
+    // 使用QQ邮箱发送
+    private String host = "smtp.qq.com";
     private String userName = "hzxrosydawn@qq.com";
-    private String password = "hzx920821";
+    private String password = "ulwjlxfwryjxdhja";
+
+    // 使用网易邮箱发送
+//    private String host = "smtp.163.com";
+//    private String userName = "hzxrosydawn@163.com";
+//    private String password = "hzx920821";
+
     private String to = "hzxrosydawn@gmail.com";
     private String cc = "2498918774@qq.com";
 
@@ -35,6 +43,8 @@ public class CommonsEmailSendTest {
         Email email = new SimpleEmail();
         email.setHostName(host);
         email.setSmtpPort(port);
+        // 强制验证服务端证书，默认为false
+        email.setSSLCheckServerIdentity(true);
         email.setAuthenticator(new DefaultAuthenticator(userName, password));
         email.setSSLOnConnect(true);
         email.setSubject(subject);
@@ -61,6 +71,10 @@ public class CommonsEmailSendTest {
         email.setSmtpPort(port);
         email.setAuthenticator(new DefaultAuthenticator(userName, password));
         email.setSSLOnConnect(true);
+        // 要建立到邮箱服务端的SSL/TSL连接，客户端需要验证服务端证书是客户端信任的，
+        // 客户端将信任的证书保存在本地的 Java keystore （可通过 keytool 工具来管理）中。
+        // 下面一条语句强制验证服务端证书，默认不验证（false）
+        email.setSSLCheckServerIdentity(true);
         email.setSubject(subject);
 
         email.setFrom(userName);
