@@ -29,7 +29,7 @@
         <jetty.version>8.1.8.v20121106</jetty.version>
         <slf4j.version>1.7.5</slf4j.version>
         <testng.version>6.8.21</testng.version>
-
+        <fastjson.version>1.2.44</fastjson.version>
         <!---->
         <app.main.class>com.rosydawn.resource.FileSourceExample</app.main.class>
         <manifest.compile.source>1.8</manifest.compile.source>
@@ -110,7 +110,11 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-web</artifactId>
