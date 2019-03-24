@@ -11,9 +11,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class WeChatServiceImpl implements WeChatService {
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
-
+    private static final Logger logger = LoggerFactory.getLogger(WeChatServiceImpl.class);
+    private static final  String token = "";
 
     @Override
     public boolean isRequestFromWeChat(String timestamp, String nonce, String signature) {

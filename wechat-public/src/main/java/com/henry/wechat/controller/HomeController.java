@@ -31,18 +31,17 @@ public class HomeController {
 
     @RequestMapping("/subscription")
     public String isRequestFromWeChat() {
-
         return null;
     }
 
     /**
-     * 校验签名信息是否来自微信公众平台。
+     * 校验GET请求的签名是否来自微信公众平台。
      *
      * @param signature 微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
-     * @param timestamp 时间戳
-     * @param nonce 随机数
-     * @param echostr 随机字符串
-     * @return
+     * @param timestamp 时间戳。
+     * @param nonce 随机数。
+     * @param echostr 随机字符串。
+     * @return 如果校验通过则返回收到的“echostr”参数值，校验失败则返回“非法请求”。
      */
     @ResponseBody
     @GetMapping(produces = "text/plain;charset=utf-8")
@@ -50,7 +49,7 @@ public class HomeController {
                                       @RequestParam(name = "timestamp", required = false) String timestamp,
                                       @RequestParam(name = "nonce", required = false) String nonce,
                                       @RequestParam(name = "echostr", required = false) String echostr) {
-        LOGGER.info("接收到微信服务器的认证消息：[{}, {}, {}, {}]", new String[] {signature, timestamp, nonce, echostr});
+        LOGGER.info("接收到微信服务器的认证消息：[{}, {}, {}, {}]", signature, timestamp, nonce, echostr);
 
         if (StringUtils.isAnyBlank(signature, timestamp, nonce, echostr)) {
             throw new IllegalArgumentException("请求的签名参数非法，请核实!");

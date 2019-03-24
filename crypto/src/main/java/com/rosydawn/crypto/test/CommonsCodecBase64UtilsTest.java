@@ -1,6 +1,9 @@
 package com.rosydawn.crypto.test;
 
 import com.rosydawn.crypto.base64.CommonsCodecBase64Utils;
+import org.apache.commons.codec.binary.Base64;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.StreamUtils;
 
 /**
  * Commons Codec的Base64实现测试类。
@@ -8,7 +11,7 @@ import com.rosydawn.crypto.base64.CommonsCodecBase64Utils;
  * @author Vincent Huang
  **/
 public class CommonsCodecBase64UtilsTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String testString = "我在学习Java加密与解密相关的技术。我在学习Java加密与解密相关的技术。";
         System.out.println("原文：" + testString);
 
@@ -42,5 +45,9 @@ public class CommonsCodecBase64UtilsTest {
         // 使用“-”代替“+”，使用“_”代替“/”，为了安全去掉了“=”，不进行补位。
         String decodedString04 = CommonsCodecBase64Utils.decode(encodedString04);
         System.out.println("解码后：" + decodedString04);
+
+        byte[] bytes = StreamUtils.copyToByteArray(new ClassPathResource("test.png").getInputStream());
+        String encodedBinaryBase64String = Base64.encodeBase64String(bytes);
+        System.out.println("二进制文件经Base64标准编码后：\n" + encodedBinaryBase64String);
     }
 }

@@ -11,6 +11,7 @@
     <name>crypto</name>
     <url>http://maven.apache.org</url>
     <properties>
+        <spring.version>4.3.16.RELEASE</spring.version>
         <!-- Apache Commons Codec 主要用于编码格式转换，主要用于 Base64、二进制、十六进制、字符集和 Url 编码转换。
             甚至也支持语音编码转换。 Codec 1.6~1.11 需要 JDK 1.6。-->
         <commons-codec.version>1.10</commons-codec.version>
@@ -18,6 +19,36 @@
         <bcprov-jdk15on.version>1.59</bcprov-jdk15on.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.1</version>
+        </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>

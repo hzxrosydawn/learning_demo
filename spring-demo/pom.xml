@@ -21,6 +21,7 @@
         <mysql.version>5.1.42</mysql.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <jsp-api.version>2.2</jsp-api.version>
+        <freemarker.version>2.3.23</freemarker.version>
         <jstl.version>1.2</jstl.version>
         <aspectj.version>1.8.1</aspectj.version>
         <commons-codec.version>1.10</commons-codec.version>
@@ -29,7 +30,7 @@
         <jetty.version>8.1.8.v20121106</jetty.version>
         <slf4j.version>1.7.5</slf4j.version>
         <testng.version>6.8.21</testng.version>
-
+        <fastjson.version>1.2.44</fastjson.version>
         <!---->
         <app.main.class>com.rosydawn.resource.FileSourceExample</app.main.class>
         <manifest.compile.source>1.8</manifest.compile.source>
@@ -82,6 +83,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>${jsp-api.version}</version>
@@ -110,7 +116,11 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-web</artifactId>
