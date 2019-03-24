@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  * @author Vincent
  **/
 public class QuickStart {
-    private static final transient Logger log = LoggerFactory.getLogger(QuickStart.class);
+    private static final Logger log = LoggerFactory.getLogger(QuickStart.class);
 
     public static void main(String[] args) {
         // The easiest way to create a Shiro SecurityManager with configured
@@ -44,25 +44,25 @@ public class QuickStart {
 
         // Do some stuff with a Session (no need for a web or EJB container!!!)
         Session session = currentUser.getSession();
-        session.setAttribute("someKey", "aValue");
+        session.setAttribute("someKey", "someValue");
         String value = (String) session.getAttribute("someKey");
-        if (value.equals("aValue")) {
-            log.info("Retrieved the correct value! [" + value + "]");
+        if ("someValue".equals(value)) {
+            log.info("Retrieved the correct value! [{}]", value);
         }
 
         // let's login the current user so we can check against roles and permissions:
         if (!currentUser.isAuthenticated()) {
-            UsernamePasswordToken token = new UsernamePasswordToken("lonestarr", "vespa");
+            UsernamePasswordToken token = new UsernamePasswordToken("trump", "pass_unreliable");
             token.setRememberMe(true);
             try {
                 currentUser.login(token);
             } catch (UnknownAccountException uae) {
-                log.info("There is no user with username of " + token.getPrincipal());
+                log.info("There is no user with username of {}", token.getPrincipal());
             } catch (IncorrectCredentialsException ice) {
-                log.info("Password for account " + token.getPrincipal() + " was incorrect!");
+                log.info("Password for account {} was incorrect!", token.getPrincipal());
             } catch (LockedAccountException lae) {
-                log.info("The account for username " + token.getPrincipal() + " is locked.  " +
-                        "Please contact your administrator to unlock it.");
+                log.info("The account for username {} is locked. Please contact your administrator to unlock it.",
+                        token.getPrincipal());
             }
             // ... catch more exceptions here (maybe custom ones specific to your application?
             catch (AuthenticationException ae) {
@@ -72,28 +72,27 @@ public class QuickStart {
 
         //say who they are:
         //print their identifying principal (in this case, a username):
-        log.info("User [" + currentUser.getPrincipal() + "] logged in successfully.");
+        log.info("User [{}] logged in successfully.", currentUser.getPrincipal());
 
         //test a role:
-        if (currentUser.hasRole("schwartz")) {
-            log.info("May the Schwartz be with you!");
+        if (currentUser.hasRole("president_us_role")) {
+            log.info("May the president_us_role be with you!");
         } else {
-            log.info("Hello, mere mortal.");
+            log.info("Let`s make America great again!");
         }
 
         //test a typed permission (not instance-level)
-        if (currentUser.isPermitted("lightsaber:weild")) {
-            log.info("You may use a lightsaber ring.  Use it wisely.");
+        if (currentUser.isPermitted("usa:whitehouse:*")) {
+            log.info("You can work here");
         } else {
-            log.info("Sorry, lightsaber rings are for schwartz masters only.");
+            log.info("Please move in the White House.");
         }
 
         //a (very powerful) Instance Level permission:
-        if (currentUser.isPermitted("winnebago:drive:eagle5")) {
-            log.info("You are permitted to 'drive' the winnebago with license plate (id) 'eagle5'.  " +
-                    "Here are the keys - have fun!");
+        if (currentUser.isPermitted("villa:serve:labor1")) {
+            log.info("You have labors to work you.");
         } else {
-            log.info("Sorry, you aren't allowed to drive the 'eagle5' winnebago!");
+            log.info("Sorry, you lost your money.");
         }
 
         //all done - log out!
